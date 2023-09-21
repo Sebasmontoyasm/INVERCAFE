@@ -1,0 +1,9 @@
+Options -indexes
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_URI} !^contents
+	RewriteRule ^((?!contents).*)$ index.php?$1 [L]
+	RewriteRule ^(contents|archivos)($|/) - [L]
+</IfModule>
