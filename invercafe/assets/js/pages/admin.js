@@ -759,6 +759,7 @@ function VerModal(idProg = "") {
 	var view = $('#frmProg').attr("data-view");
 	var context = $('#frmProg').attr("data-context");
 	var metodo = "";
+
     switch(context) {
         case "usuarios":
             metodo = 'verModalUsuarios';
@@ -766,7 +767,13 @@ function VerModal(idProg = "") {
         case "contratos":
             metodo = 'verModalContratos';
             break;
-    }
+		case "clientes":
+			metodo = 'verModalClientes';
+			break;
+		case "brokers":
+			metodo = 'verModalBrokers';
+			break;
+	}
 
 	$.ajax({
 		dataType: "text",
@@ -929,8 +936,7 @@ function validarCamposForm(contenedor){
 		}			
 	});
 }
-/*
+
 jQuery(document).ready(function () {
     KTAdmin.init();
 });
-*/

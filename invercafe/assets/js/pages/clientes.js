@@ -4,53 +4,8 @@
 var KTClientes = function () {
     // Private properties
 
-    var _guardarUsuario = function () {
-        var el = document.getElementById("btn-guardar-usuario");
-
-        if (!el) {
-            return;
-        }
-        KTUtil.addEvent(el, 'click', function(e) {
-			var view = $('#frmProg').attr("data-view");
-			var context = $('#frmProg').attr("data-context");
-			validarCamposForm('#frmProg');
-			if(valMessage.isValid){
-				$.ajax({
-					dataType: "json",
-					data: "context=" + context + "&" + $("form").serialize(),
-					url:   HOST_URL + view + '/guardarUsuario',
-					type:  'post',
-					beforeSend: function(){
-					//Lo que se hace antes de enviar el formulario
-					},
-					success: function(data, status, xhr){
-						location.reload();
-					},
-					error:	function(xhr,err){ 
-						location.reload();
-					}
-				});					
-			} else {
-				swal.fire({
-					text: valMessage.msj,
-					icon: "error",
-					buttonsStyling: false,
-					confirmButtonText: "Aceptar",
-					customClass: {
-						confirmButton: "btn font-weight-bold btn-light-primary"
-					}
-				}).then(function() {
-					//KTUtil.scrollTop();
-				});		
-			}
-        });			
-    }
-
     return {
 		init: function () {
-			//_initSelect2();
-			_guardarUsuario();
-			_guardarPerfilCuenta();
 		}
     }
 }();
@@ -63,7 +18,14 @@ if (typeof module !== 'undefined') {
 function actualizarEstadoCliente(idReg, idEstado){
 	var view = $('#frmProg').attr("data-view");
 	var context = $('#frmProg').attr("data-context");
-	var metodo = "actualizarEstado";
+	var metodo = "";
+	//var context = (context == "diario") ? "verModalDiario" : "verModalFuturo";
+    switch(view) {
+        case "clientes":
+            metodo = 'actualizarEstado';
+            break;
+    }
+	//alert("Id=" + IdCadena + "Estado=" + Estado);
 	$.ajax({
 	  dataType: "json",
 	  data: {
@@ -90,7 +52,9 @@ function actualizarEstadoCliente(idReg, idEstado){
 	  }
 	});	
 }
-
+/**
 jQuery(document).ready(function () {
     KTClientes.init();
 });
+
+ */

@@ -36,7 +36,7 @@ class Brokers extends MY_Controller {
     }
 	
     public function index() {
-        //listar los usuarios disponibles
+        //listar los brokers disponibles
         $this->load->model('clientes_mdl', 'brokerModel');
 		$query = $this->brokerModel->ConsultarBrokers();
         $rtaBrok = $query->Result();
@@ -56,26 +56,28 @@ class Brokers extends MY_Controller {
 		exit(json_encode($output));
     }
 
-    public function verModalUsuarios($Params = "") {
-		$listParams = explode('-', $Params);
-		$this->load->model('usuarios_mdl', 'usrModel');
-		$qryPerf = $this->usrModel->ConsultarPerfilesActivos();
-		$perfiles = $qryPerf->Result();
+    public function verModalBrokers($Params = "") {
+		$this->load->model('brokers_mdl', 'broModel');
 
-		$usuario = array();
+		$broker = array();
+        $countries = array();
+        
 		if($Params != ""){
-			$query = $this->usrModel->ConsultarUsuarioId($listParams[1], $listParams[0]);
-			$usuario = $query->Row();
-		}	
-		$this->tp['perfiles'] = $perfiles;
-		$this->tp['usuario'] = $usuario;
-		$this->load->view('crud/modal-usuarios', $this->tp);
+			$query = $this->broModel->ConsultarBrokerId($Params);
+			$broker = $query->Row();
+		}
+
+        $query = $this->broModel->ConsultarCountriesActivos($Params);
+        $countries = $query->result();
+		$this->tp['broker'] = $broker;
+        $this->tp['countries'] = $countries;
+		$this->load->view('crud/modal-brokers', $this->tp);
 	}
 	
-	public function guardarUsuario() {
+	public function guardarBroker() {
 		$post = $this->input->post(null, true);
-		$this->load->model('usuarios_mdl', 'usrModel');
-		$query = $this->usrModel->ActualizarUsuario($post["hidIdUsuario"], $post["cmbPerfil"], trim($post["txtUserName"]), trim($post["txtPassword"]), trim($post["txtEmail"]), trim($post["txtNames"]), trim($post["txtLastNames"]), $post["hidIdEstado"]);
+		$this->load->model('brokers_mdl', 'broModel');
+		$query = $this->broModel->ActualizarBroker($post["hidIdBroker"], $post["cmbPerfil"], trim($post["txtUserName"]), trim($post["txtPassword"]), trim($post["txtEmail"]), trim($post["txtNames"]), trim($post["txtLastNames"]), $post["hidIdEstado"]);
 		
 		$output['msj'] = "Se han guardado los cambios de manera correcta";
 		

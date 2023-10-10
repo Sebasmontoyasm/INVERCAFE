@@ -104,7 +104,7 @@
 																</span>
 															</td>
 															<td class="pr-0 text-right">
-																<a href="#!" class="btn btn-icon btn-light btn-hover-primary btn-sm btn-modal-prog" onclick="VerModal('<?php echo $cliente->CLIEId ?>')">
+															<a href="#!" class="btn btn-icon btn-light btn-hover-primary btn-sm btn-modal-prog" onclick="VerModal('<?php echo $cliente->CLIEId ?>')">
 																	<span class="svg-icon svg-icon-md svg-icon-primary">
 																		<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Navigation/Arrow-right.svg-->
 																		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

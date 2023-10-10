@@ -12,57 +12,56 @@
 				</svg><!--end::Svg Icon-->
 			</span>
 		</span>
-		<h5 class="modal-title" id="exampleModalLabel">Gestionar cliente</h5>
+		<h5 class="modal-title" id="exampleModalLabel">Gestionar broker</h5>
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			<i aria-hidden="true" class="ki ki-close"></i>
 		</button>
 	</div>
 	<div class="modal-body">
 		<div class="form-group">
-			<label class="form-text text-success">Adiciona o modifica clientes en el siguiente formulario</label>
-			<input id="hidIdCliente" name="hidIdCliente" type="hidden" class="form-control" value="<?php echo (isset($cliente->CLIEId) ? $cliente->CLIEId : "") ?>">
-			<input id="hidIdEstado" name="hidIdEstado" type="hidden" class="form-control" value="<?php echo (isset($cliente->CLIEEstado) ? $cliente->CLIEEstado : 1) ?>">
+			<label class="form-text text-success">Adiciona o modifica brokers en el siguiente formulario</label>
+			<input id="hidIdbroker" name="hidIdbroker" type="hidden" class="form-control" value="<?php echo (isset($broker->BROId) ? $broker->BROId : "") ?>">
+			<input id="hidIdEstado" name="hidIdEstado" type="hidden" class="form-control" value="<?php echo (isset($broker->BROEstado) ? $broker->BROEstado : 1) ?>">
 		</div>
 		<div class="form-group">
 			<label>Nombre completo</label>
-			<input id="txtNames" name="txtNames" type="text" class="form-control form-control-solid" value="<?php echo (isset($cliente->CLIENombre) ? $cliente->CLIENombre : "") ?>" placeholder="Nombre completo" required />
-		</div>
+			<input id="txtNames" name="txtNames" type="text" class="form-control form-control-solid" value="<?php echo (isset($broker->BRONombre) ? $broker->BRONombre : "") ?>" placeholder="Nombre completo" required />
 		<div class="form-group">
-			<label class="mr-3 mb-0 d-md-block">País:</label>
+			<label>País</label>
 			<select class="form-control live-search" id="cmbPaises" name="cmbPaises" data-size="5" data-live-search="true" required>
-				<option value="">[Seleccionar]</option>	
+				<option value="">[Seleccionar]</option>
 				<?php foreach ($countries as $indice => $country) { ?>
-					<option value="<?php echo $country->PAISId ?>"><?php echo $country->country_name ?></option>
+					<option value="<?php echo $country->PAISId ?>" <?php echo (isset($broker->PAISId) ? ($country->PAISId == $broker->PAISId ? "selected" : "") : "") ?>><?php echo $country->country_name ?></option>
 				<?php } ?>
 			</select>
 		</div>
 		<div class="form-group">
 			<label>Ciudad</label>
 			<input id="txtCiudad" name="txtCiudad" type="text" class="form-control form-control-solid" placeholder="Ciudad" pattern="[a-zA-Z]+{3}" 
-				value="<?php echo (isset($cliente->CLIECiudad) ? $cliente->CLIECiudad : "") ?>"
+				value="<?php echo (isset($broker->BROCiudad) ? $broker->BROCiudad : "") ?>"
 			/>
 		</div>
 		<div class="form-group">
 			<label>Contacto</label>
 			<input id="txtContacto" name="txtContacto" type="text" class="form-control form-control-solid" placeholder="Contacto"
-				value="<?php echo (isset($cliente->CLIEContacto) ? $cliente->CLIEContacto : "") ?>" 
+				value="<?php echo (isset($broker->BROContacto) ? $broker->BROContacto : "") ?>" 
 			/>
 		</div>
 		<div class="form-group">
 			<label>Telefono</label>
 			<input id="txttelefono" name="txttelefono" type="number" class="form-control form-control-solid" placeholder="Telefono" pattern="[0-9]{8,9}" 
-				value="<?php echo (isset($cliente->CLIETelefono) ? $cliente->CLIETelefono : "") ?>"
+				value="<?php echo (isset($broker->BROTelefono) ? $broker->BROTelefono : "") ?>"
 			/>
 		</div>
 		<div class="form-group">
 			<label>Dirección</label>
 			<input id="txtDireccion" name="txtDireccion" type="text" class="form-control form-control-solid" placeholder="Dirección"
-				value="<?php echo (isset($cliente->CLIEDireccion) ? $cliente->CLIEDireccion : "") ?>"
+				value="<?php echo (isset($broker->BRODireccion) ? $broker->BRODireccion : "") ?>"
 			/>
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button id="btn-guardar-cliente" type="button" class="btn btn-primary font-weight-bold">Almacenar</button>
+		<button id="btn-guardar-broker" type="button" class="btn btn-primary font-weight-bold">Almacenar</button>
 	</div>
 </div>
-<script src="<?php echo $template; ?>js/pages/modal-clientes.js?v=7.2.9"></script>
+<script src="<?php echo $template; ?>js/pages/modal-brokers.js?v=7.2.9"></script>

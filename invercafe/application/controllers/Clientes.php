@@ -21,7 +21,7 @@ class Clientes extends MY_Controller {
             exit();
         }
 
-        //hay usuario se envia al dashboard
+        //hay Cliente se envia al dashboard
         $this->GetCurrentUser();
         				
 		$this->valida_rol();
@@ -36,7 +36,7 @@ class Clientes extends MY_Controller {
     }
 	
     public function index() {
-        //listar los usuarios disponibles
+        //listar los clientes disponibles
         $this->load->model('clientes_mdl', 'clienteModel');
 		$query = $this->clienteModel->ConsultarClientes();
         $rtaClie = $query->Result();
@@ -51,31 +51,35 @@ class Clientes extends MY_Controller {
         $this->load->model('clientes_mdl', 'clienteModel');
 		$query = $this->clienteModel->ActualizarClienteEstado($post["idReg"], $post["idEstado"]);
 
-		$output['msj'] = "Se ha camabiado el estado de manera satisfactoria.";
+		$output['msj'] = "Se ha cambiado el estado de manera satisfactoria.";
 		
 		exit(json_encode($output));
     }
 
-    public function verModalUsuarios($Params = "") {
-		$listParams = explode('-', $Params);
-		$this->load->model('usuarios_mdl', 'usrModel');
-		$qryPerf = $this->usrModel->ConsultarPerfilesActivos();
-		$perfiles = $qryPerf->Result();
-
-		$usuario = array();
+    public function verModalClientes($Params = "") {
+		$this->load->model('clientes_mdl', 'clnModel');
+		$cliente = array();
+        $countries = array();
+        
 		if($Params != ""){
-			$query = $this->usrModel->ConsultarUsuarioId($listParams[1], $listParams[0]);
-			$usuario = $query->Row();
+			$query = $this->clnModel->ConsultarClientesId($Params);
+			$cliente = $query->Row();
+          
 		}	
-		$this->tp['perfiles'] = $perfiles;
-		$this->tp['usuario'] = $usuario;
-		$this->load->view('crud/modal-usuarios', $this->tp);
+
+        $query = $this->clnModel->ConsultarCountriesActivos($Params);
+        $countries = $query->result();
+        
+		$this->tp['cliente'] = $cliente;
+        $this->tp['countries'] = $countries;
+		$this->load->view('crud/modal-clientes', $this->tp);
 	}
 	
-	public function guardarUsuario() {
+	
+	public function guardarCliente() {
 		$post = $this->input->post(null, true);
-		$this->load->model('usuarios_mdl', 'usrModel');
-		$query = $this->usrModel->ActualizarUsuario($post["hidIdUsuario"], $post["cmbPerfil"], trim($post["txtUserName"]), trim($post["txtPassword"]), trim($post["txtEmail"]), trim($post["txtNames"]), trim($post["txtLastNames"]), $post["hidIdEstado"]);
+		$this->load->model('clientes_mdl', 'clienteModel');
+		$query = $this->clienteModel->ActualizarCliente($post["hidIdCliente"], $post["cmbPerfil"], trim($post["txtUserName"]), trim($post["txtPassword"]), trim($post["txtEmail"]), trim($post["txtNames"]), trim($post["txtLastNames"]), $post["hidIdEstado"]);
 		
 		$output['msj'] = "Se han guardado los cambios de manera correcta";
 		
