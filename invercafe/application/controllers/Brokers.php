@@ -37,7 +37,7 @@ class Brokers extends MY_Controller {
 	
     public function index() {
         //listar los brokers disponibles
-        $this->load->model('clientes_mdl', 'brokerModel');
+        $this->load->model('brokers_mdl', 'brokerModel');
 		$query = $this->brokerModel->ConsultarBrokers();
         $rtaBrok = $query->Result();
 		
@@ -48,7 +48,7 @@ class Brokers extends MY_Controller {
     public function actualizarEstado() {
 		$post = $this->input->post(null, true);
 		
-        $this->load->model('clientes_mdl', 'brokerModel');
+        $this->load->model('brokers_mdl', 'brokerModel');
 		$query = $this->brokerModel->ActualizarBrokerEstado($post["idReg"], $post["idEstado"]);
 
 		$output['msj'] = "Se ha camabiado el estado de manera satisfactoria.";
@@ -76,8 +76,8 @@ class Brokers extends MY_Controller {
 	
 	public function guardarBroker() {
 		$post = $this->input->post(null, true);
-		$this->load->model('brokers_mdl', 'broModel');
-		$query = $this->broModel->ActualizarBroker($post["hidIdBroker"], $post["cmbPerfil"], trim($post["txtUserName"]), trim($post["txtPassword"]), trim($post["txtEmail"]), trim($post["txtNames"]), trim($post["txtLastNames"]), $post["hidIdEstado"]);
+		$this->load->model('brokers_mdl', 'brokerModel');
+        $query = $this->brokerModel->ActualizarBroker($post["hidIdBroker"], $post["cmbPaises"], trim($post["txtNames"]), trim($post["txtContacto"]), trim($post["txttelefono"]), trim($post["txtCiudad"]),  trim($post["txtEmail"]), trim($post["txtDireccion"]));
 		
 		$output['msj'] = "Se han guardado los cambios de manera correcta";
 		

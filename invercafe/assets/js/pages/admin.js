@@ -936,7 +936,6 @@ function validarCamposForm(contenedor){
 		}			
 	});
 }
-
-jQuery(document).ready(function () {
-    KTAdmin.init();
-});
+//jQuery(document).ready(function () {
+ //   KTAdmin.init();
+//});

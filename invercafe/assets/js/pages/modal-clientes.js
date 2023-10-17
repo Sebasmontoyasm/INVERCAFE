@@ -16,14 +16,8 @@ var KTModalClientes = function () {
         }
     }
 
-    var _initSelectPicker = function () {
-        // minimum setup
-        $('.live-search').selectpicker();
-    }
-
     var _guardarCliente = function () {
         var el = document.getElementById("btn-guardar-cliente");
-
         if (!el) {
             return;
         }
@@ -41,12 +35,10 @@ var KTModalClientes = function () {
 					//Lo que se hace antes de enviar el formulario
 					},
 					success: function(data, status, xhr){
-						//location.reload();
-                        alert("paso"+data);
+						location.reload();
 					},
 					error:	function(xhr,err){ 
-                        alert("ERROR: "+err);
-						//location.reload();
+						location.reload();
 					}
 				});					
 			} else {
@@ -67,7 +59,6 @@ var KTModalClientes = function () {
 
     return {
 		init: function () {
-			_initSelectPicker();
             _guardarCliente();
 		}
     }

@@ -12,7 +12,7 @@
 				</svg><!--end::Svg Icon-->
 			</span>
 		</span>
-		<h5 class="modal-title" id="exampleModalLabel">Gestionar cliente</h5>
+		<h5 class="modal-title" id="modal-clientes">Gestionar cliente</h5>
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			<i aria-hidden="true" class="ki ki-close"></i>
 		</button>
@@ -21,18 +21,17 @@
 		<div class="form-group">
 			<label class="form-text text-success">Adiciona o modifica clientes en el siguiente formulario</label>
 			<input id="hidIdCliente" name="hidIdCliente" type="hidden" class="form-control" value="<?php echo (isset($cliente->CLIEId) ? $cliente->CLIEId : "") ?>">
-			<input id="hidIdEstado" name="hidIdEstado" type="hidden" class="form-control" value="<?php echo (isset($cliente->CLIEEstado) ? $cliente->CLIEEstado : 1) ?>">
 		</div>
 		<div class="form-group">
 			<label>Nombre completo</label>
 			<input id="txtNames" name="txtNames" type="text" class="form-control form-control-solid" value="<?php echo (isset($cliente->CLIENombre) ? $cliente->CLIENombre : "") ?>" placeholder="Nombre completo" required />
 		</div>
 		<div class="form-group">
-			<label class="mr-3 mb-0 d-md-block">País:</label>
+			<label class="mr-3 mb-0 d-md-block">País</label>
 			<select class="form-control live-search" id="cmbPaises" name="cmbPaises" data-size="5" data-live-search="true" required>
 				<option value="">[Seleccionar]</option>	
 				<?php foreach ($countries as $indice => $country) { ?>
-					<option value="<?php echo $country->PAISId ?>"><?php echo $country->country_name ?></option>
+					<option value="<?php echo $country->PAISId ?>" <?php echo (isset($cliente->PAISId) ? ($country->PAISId == $cliente->PAISId ? "selected" : "") : "") ?>><?php echo $country->country_name ?></option>
 				<?php } ?>
 			</select>
 		</div>
@@ -53,6 +52,10 @@
 			<input id="txttelefono" name="txttelefono" type="number" class="form-control form-control-solid" placeholder="Telefono" pattern="[0-9]{8,9}" 
 				value="<?php echo (isset($cliente->CLIETelefono) ? $cliente->CLIETelefono : "") ?>"
 			/>
+		</div>
+		<div class="form-group">
+			<label>Correo electrónico</label>
+			<input id="txtEmail" name="txtEmail" type="email" class="form-control form-control-solid" value="<?php echo (isset($cliente->CLIEEmail) ? $cliente->CLIEEmail : "") ?>" placeholder="Correo electrónico" required />
 		</div>
 		<div class="form-group">
 			<label>Dirección</label>

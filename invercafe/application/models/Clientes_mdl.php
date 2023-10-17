@@ -36,32 +36,12 @@ class Clientes_mdl extends CI_Model {
         return $this->db->query($Sql);
     }
 
-    public function ActualizarCliente($CLIEId, $PERFId, $CLIEUserName, $CLIEPasswd, $CLIEEmail, $CLIEName, $CLIELastName, $CLIEEstado) {
-        $CLIEId = (is_null($CLIEId) || empty($CLIEId)) ? "NULL" : $CLIEId;
-		$Sql = "call sp_cliente_actualizarXid($inCLIEId,$inPAISId,'$inCLIENombre','$inCLIEContacto','$inCLIETelefono','$inCLIECiudad','$inCLIEDireccion')";
-        echo $Sql ;
+    public function ActualizarCliente($inCLIEId, $inPAISId, $inCLIENombre, $inCLIEContacto, $inCLIETelefono, $inCLIECiudad, $inCLIEEmail, $inCLIEDireccion) {
+        $CLIEId = empty($inCLIEId) ? 0 : $inCLIEId;
+		$Sql = "call sp_cliente_actualizarXid($CLIEId,$inPAISId,'$inCLIENombre','$inCLIEContacto','$inCLIETelefono','$inCLIECiudad', '$inCLIEEmail','$inCLIEDireccion')";
         $this->db->close();
         return $this->db->query($Sql);
     }
-	
-    public function ConsultarBrokers() {
-        $Sql = "call sp_broker_seleccionar();";
-        $this->db->close();
-        return $this->db->query($Sql);
-    }
-
-    public function SeleccionarBrokersActivos() {
-        $Sql = "call sp_broker_seleccionarActivos();";
-        $this->db->close();
-        return $this->db->query($Sql);
-    }
-
-    public function ActualizarBrokerEstado($CLIEId, $CLIEEstado) {
-        $Sql = "call sp_broker_modificarEstado($CLIEId, $CLIEEstado)";
-        $this->db->close();
-        return $this->db->query($Sql);
-    }
-	
 }
 
 ?>

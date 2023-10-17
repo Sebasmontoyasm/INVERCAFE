@@ -74,16 +74,13 @@ class Clientes extends MY_Controller {
         $this->tp['countries'] = $countries;
 		$this->load->view('crud/modal-clientes', $this->tp);
 	}
-	
-	
-	public function guardarCliente() {
+    public function guardarCliente() {
 		$post = $this->input->post(null, true);
 		$this->load->model('clientes_mdl', 'clienteModel');
-		$query = $this->clienteModel->ActualizarCliente($post["hidIdCliente"], $post["cmbPerfil"], trim($post["txtUserName"]), trim($post["txtPassword"]), trim($post["txtEmail"]), trim($post["txtNames"]), trim($post["txtLastNames"]), $post["hidIdEstado"]);
+		$query = $this->clienteModel->ActualizarCliente($post["hidIdCliente"], $post["cmbPaises"], trim($post["txtNames"]), trim($post["txtContacto"]), trim($post["txttelefono"]), trim($post["txtCiudad"]),trim($post["txtEmail"]), trim($post["txtDireccion"]));
 		
 		$output['msj'] = "Se han guardado los cambios de manera correcta";
 		
 		exit(json_encode($output));
-	}
-		
+	}	
 }
