@@ -1,7 +1,6 @@
 <?php include(APPPATH . 'views/inc/head.php'); ?>
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
 	<?php include_once(APPPATH . 'views/inc/header-mobile.php'); ?>
-	<link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
 	<div class="d-flex flex-column flex-root">
 		<!--begin::Page-->
 		<div class="d-flex flex-row flex-column-fluid page">
@@ -150,8 +149,7 @@
 		</div>
 		<!--end::Page-->
 	</div>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="<?php echo $template; ?>js/pages/brokers.js?v=7.2.9"></script>
 	<?php include_once(APPPATH . 'views/inc/js-admin.php'); ?>
+	<script src="<?php echo $template; ?>js/pages/brokers.js?v=7.2.9"></script>
 </body>
 </html>

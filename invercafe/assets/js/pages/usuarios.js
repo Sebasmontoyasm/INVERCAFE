@@ -48,9 +48,7 @@ var KTUsuarios = function () {
 
     return {
 		init: function () {
-			//_initSelect2();
 			_guardarUsuario();
-			_guardarPerfilCuenta();
 		}
     }
 }();

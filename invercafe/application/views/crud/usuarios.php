@@ -141,7 +141,7 @@
 		</div>
 		<!--end::Page-->
 	</div>
-	<script src="<?php echo $template; ?>js/pages/usuarios.js?v=7.2.9"></script>
 	<?php include_once(APPPATH . 'views/inc/js-admin.php'); ?>
+	<script src="<?php echo $template; ?>js/pages/usuarios.js?v=7.2.9"></script>
 </body>
 </html>

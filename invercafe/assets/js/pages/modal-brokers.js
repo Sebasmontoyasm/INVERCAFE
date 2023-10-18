@@ -15,6 +15,10 @@ var KTModalBrokers = function () {
             rightArrow: '<i class="la la-angle-right"></i>'
         }
     }
+	var _initSelectPicker = function () {
+        $('.live-search').selectpicker();
+		$('.multiple').selectpicker();
+	}
 
     var _guardarBroker = function () {
         var el = document.getElementById("btn-guardar-broker");
@@ -60,6 +64,7 @@ var KTModalBrokers = function () {
     return {
 		init: function () {
             _guardarBroker();
+			_initSelectPicker();
 		}
     }
 }();

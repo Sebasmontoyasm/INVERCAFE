@@ -20,3 +20,4 @@
 <!--end::Page Scripts-->
 <script src="<?php echo $template; ?>plugins/custom/datatables/datatables.bundle.js?v=7.2.9"></script>
 <script src="<?php echo $template; ?>plugins/custom/maskmoney/jquery.maskMoney.js?v=7.2.9"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>

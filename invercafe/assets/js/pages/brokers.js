@@ -18,9 +18,7 @@ function inicializarDataTables() {
     $('#tbl-brokers').DataTable({
         fixedHeader: {
             header: true,
-			//Pendiente cambiar esto por un headerOffset: $('#kt_header').outerHeight()
-			//headerOffset: $('#kt_header').outerHeight()
-            headerOffset: 119
+			headerOffset: $('#kt_header').outerHeight() + $('#kt_subheader').outerHeight()
         },
         ordering: false,
         paging: false,

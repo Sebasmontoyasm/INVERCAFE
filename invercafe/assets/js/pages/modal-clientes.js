@@ -16,6 +16,11 @@ var KTModalClientes = function () {
         }
     }
 
+	var _initSelectPicker = function () {
+        $('.live-search').selectpicker();
+		$('.multiple').selectpicker();
+	}
+
     var _guardarCliente = function () {
         var el = document.getElementById("btn-guardar-cliente");
         if (!el) {
@@ -60,6 +65,7 @@ var KTModalClientes = function () {
     return {
 		init: function () {
             _guardarCliente();
+			_initSelectPicker();
 		}
     }
 }();

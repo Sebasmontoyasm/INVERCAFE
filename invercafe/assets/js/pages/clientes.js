@@ -7,6 +7,10 @@ var KTClientes = function () {
 		init: function () {
 		}
     }
+
+
+
+    
 }();
 
 
@@ -18,7 +22,7 @@ function inicializarDataTables() {
     $('#tbl-clientes').DataTable({
         fixedHeader: {
             header: true,
-            headerOffset: 119
+            headerOffset: $('#kt_header').outerHeight() + $('#kt_subheader').outerHeight()
         },
         ordering: false,
         paging: false,
@@ -63,10 +67,8 @@ function actualizarEstadoCliente(idReg, idEstado) {
     });
 }
 
-function cargarContenido() {
-    inicializarDataTables();
-    
+jQuery(document).ready(function () {
     KTClientes.init();
-}
+    inicializarDataTables();
+});
 
-$(document).ready(cargarContenido);
